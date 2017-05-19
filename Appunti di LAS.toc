@@ -78,3 +78,4 @@
 \contentsline {chapter}{\numberline {15}Filesystem Distribuito}{61}{chapter.15}
 \contentsline {paragraph}{File Server:}{61}{section*.63}
 \contentsline {paragraph}{NFS:}{62}{section*.64}
+\contentsline {paragraph}{Automount}{65}{section*.65}

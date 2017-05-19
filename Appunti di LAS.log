@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.4)  19 MAY 2017 10:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.4)  19 MAY 2017 11:15
 entering extended mode
 **"./Appunti di LAS.tex"
 ("Appunti di LAS.tex"
@@ -1228,13 +1228,27 @@ Overfull \hbox (23.57983pt too wide) in paragraph at lines 1667--1668
  []
 
 [64 <./fsesempioconf.png> <./esdfs1.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1673.
- [65 <./esdfs2.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1673.
+Underfull \hbox (badness 10000) in paragraph at lines 1669--1696
 
-("Appunti di LAS.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1673.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1673.
+ []
+
+[65 <./esdfs2.png>] <autofslab.png, id=457, 606.01407pt x 370.38374pt>
+File: autofslab.png Graphic file (type png)
+
+<use autofslab.png>
+Package pdftex.def Info: autofslab.png used on input line 1697.
+(pdftex.def)             Requested size: 363.61125pt x 222.23195pt.
+
+Overfull \hbox (18.61125pt too wide) in paragraph at lines 1697--1698
+ [] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1704.
+[66 <./autofslab.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1704.
+ ("Appunti di LAS.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1704.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1704.
 
 Package rerunfilecheck Info: File `"Appunti di LAS".out' has not changed.
 (rerunfilecheck)             Checksum: D4FD44140D3A8994E658D87063743542;804.
@@ -1242,13 +1256,13 @@ Package rerunfilecheck Info: File `"Appunti di LAS".out' has not changed.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1673.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1704.
  ) 
 Here is how much of TeX's memory you used:
- 7436 strings out of 493334
- 103234 string characters out of 3136663
+ 7443 strings out of 493334
+ 103336 string characters out of 3136663
  201593 words of memory out of 3000000
- 10686 multiletter control sequences out of 15000+200000
+ 10690 multiletter control sequences out of 15000+200000
  8632 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  29i,7n,26p,919b,476s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1258,9 +1272,9 @@ Here is how much of TeX's memory you used:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Appunti di LAS.pdf" (65 pages, 1876253 bytes).
+Output written on "Appunti di LAS.pdf" (66 pages, 1936460 bytes).
 PDF statistics:
- 511 PDF objects out of 1000 (max. 8388607)
- 150 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 152 named destinations out of 1000 (max. 500000)
+ 246 words of extra memory for PDF output out of 10000 (max. 10000000)
 

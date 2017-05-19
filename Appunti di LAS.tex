@@ -26,7 +26,7 @@
 \\
 Soggetto alla licenza Creative Commons\\
 Finito di scrivere in data \today \\
-Per eventuali suggerimenti e correzioni: \texttt{seba.fil@live.com}
+Per eventuali suggerimenti e correzioni: \texttt{854510@stud.unive.it}
 \end{minipage}
 
 \tableofcontents
@@ -1666,7 +1666,36 @@ Per utilizzare l'area condivisa ho tre modi:
 \includegraphics[scale=0.6]{esdfs1.png}\\
 \includegraphics[scale=0.6]{esdfs2.png}
 \end{center}
-
+\paragraph{Automount} Non è mai consigliabile mantenere un FS remoto montato permanentemente su un sistema. In caso di fallimenti della rete, le operazioni che interessano dei files presenti nelle partizioni montate potrebbero essere bloccate. Inoltre, se si montano separatamente una gran quantità di posizioni (es.: le directories \texttt{home} degli utenti) in alcuni unix si rischia di eccedere il numero massimo di mount.\\
+Per questo vari sistemi Unix (tra cui Linux) implementano un meccanismo di automount: quando un processo accede a un file o a una directory all'interno di un certo percorso, questo viene montato all'istante. Dopo un certo periodo di inattività, dopo che tutti i files sotto a quel mount point sono stati chiusi, il FS viene smontato.\\
+In Linux, il sistema viene gestito dal kernel stesso, tramite l'infrastruttura automount, che si occupa delle operazioni effettuate in un certo percorso (come cancellazione, copia, creazione, ecc.) dov'è montato il FS condiviso, e delle operazioni di mount/unmount di tale FS.\\
+La tabella di corrispondenza tra percorso e locazione, così come altre funzioni accessorie, sono mantenute da un programma in user space chiamato \texttt{autofs} (pacchetto omonimo). In \texttt{autofs} le tabelle di corrispondenza possono sia risiedere sul FS (anche sotto forma di \texttt{regex}), sia provenire da fonti esterne, come un DIT LDAP.\\
+Per installare e configurare Automount in Ubuntu/Debian, bisogna usare il comando
+\\\tab\texttt{\# apt-get install autofs}\\
+Per la configurazione va editato il file \texttt{/etc/auto.master} da cui si possono ramificare altri files che gestiscono la configurazione per le directories specificate:\\
+\tab\texttt{\# This is an automounter map and it has the following format}\\
+\tab\texttt{\# key [ mountoptionsseparatedbycomma
+] location}\\
+\tab\texttt{\# For details of the format look at autofs(5).}\\
+\tab\texttt{/misc /etc/auto.misc timeout=
+60}\\
+\tab\texttt{/smb /etc/auto.smb}\\
+\tab\texttt{/misc /etc/auto.misc}\\
+\tab\texttt{/net /etc/auto.net}\\ 
+Procederemo ora con un esempio di mounting di share NFS. Supponiamo di aver configurato il server \texttt{sarah} con IP \texttt{192.168.1.1} per esportare la directory \texttt{listadellaspesa}.\\
+Editiamo il file \texttt{/etc/auto.master} aggiungendo la riga\\
+\tab\texttt{/nfs \tab /etc/auto.nfs}\\
+Creiamo \texttt{/etc/auto.nfs} aggiungendo\\
+\tab\texttt{dasarah \tab -fstype=nfs4 192.168.1.1:/listadellaspesa}\\
+Riavviamo \texttt{autofs}:\\
+\tab\texttt{\# service autofs restart}\\
+Andiamo nella directory \texttt{/nfs/dasarah}:\\
+\tab\texttt{\# cd /nfs/dasarah}\\
+\tab\texttt{\# ls}\\
+\tab\texttt{\# . ..listadellaspesa}\\
+\begin{center}
+\includegraphics[scale=0.6]{autofslab.png}
+\end{center}
 
 
 
