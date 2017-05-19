@@ -1729,7 +1729,50 @@ Questo comando crea un nuovo file delle quote nella directory principale del FS.
 Abilitiamo la quota col comando\\
 \tab\texttt{quotaon /user}\\
 A questo punto abbiamo un sistema di quota sulla partizione \texttt{/user} che potete gestire con i comandi \texttt{edquota}, \texttt{setquota} e \texttt{repquota}.\\
-
+\chapter{Web}
+\paragraph{World Wide Web (WWW)} è il sistema che permette la condivisione di documenti ipertestuali multimediali, costituiti cioè da un insieme di contenuti testuali, visuali e audio/video, sfruttando l'infrastruttura di internet.\\
+Il Web nasce come sistema di gestione di ipertesti in ambiente distribuito, per poi assumere i ruoli più svariati: dal veicolo di contenuti e flussi multimediali, all'interfaccia per applicazione interattive. Viene sviluppato al CERN nel 1989 per poi venire "regalato" al pubblico nel 1991. Si basa sul protocollo HTTP, ha un'architettura di tipo client/server ed è il servizio più diffuso di internet.\\
+La prima versione del protocollo HTTP prevedeva che in una sessione il client (browser) potesse fare una singola richiesta di una risorsa (un pathname) al server, e che quest'ultimo potesse solo rispondere a tali richieste.\\
+Il protocollo HTTP 1.1 introdusse la possibilità di avere più richieste per connessione, di avere connessioni permanenti e, all'interno di queste, di mandare richieste/risposte asincrone.\\
+Il protocollo obbliga inoltre i client a specificare, nella richiesta, qual è l'hostname dal quale si vuole ottenere una risorsa. Questo permette di implementare il virtual hosting, in cui un server può ospitare più siti internet raggiungibili utsando nomi diversi, sebbene corrispondano sempre allo stesso IP.\\
+Il \textbf{Web server} è un'applicazione software che, in esecuzione su un \textbf{host server}, è in grado di gestire le richieste di trasferimento di pagine web di un client, di solito web browser. La comunicazione tra server e client avviene tramite il protocollo HTTP che utilizza la porta TCP 80, o eventualmente HTTPS che utilizza la 443.\\
+Tutti i web server forniscono pagine web standard allo stesso modo: in sostanza, tutti gestiscono richieste HTML e CSS. L'interpretazione del codice inviato è fatta dal browser, ma ognuno di essi ha delle peculiarità che permettono di gestire applicazioni dinamiche diverse.\\
+Elenco di Web Servers:
+\begin{itemize}
+\item \textbf{NCSA HTTP:} il più diffuso prima di Apache.
+\item \textbf{Apache HTTP Server:} sviluppato da Apache Software Foundation, è il più diffuso, ed è l'unico che grazie ad una tecnologia modulare è in grado di gestire applicazioni di tutti i tipi: php, python, java, ecc..
+\item \textbf{Apache Tomcat:} sviluppato anch'esso da Apache Software Foundation, fornisce un sistema di gestione delle servlet java.
+\item \textbf{Light HTTPD}
+\item \textbf{Ngix}
+\item \textbf{Internet Information Services (IIS):} sviluppato da Microsoft, permette la gestione di applicazioni .NET, nelle nuove versioni è stato gradualmente introdotto il supporto per PHP.
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.5]{diffusioneweb.png}
+\end{center}
+\paragraph{Apache HTTP Server} È il server web modulare più diffuso, in grado di operare su una grande varietà di sistemi operativi, tra cui UNIX/Linux, Microsoft Windows e OS X.\\
+L'architettura è composta da un daemon (servizio) che, sulla base delle impostazioni contenute nel file di configurazione \texttt{httpd.conf}, permette l'accesso a uno o più siti, gestendo varie caratteristiche di sicurezza e potendo ospitare diverse estensioni per pagine attive (o dinamiche), come PHP o Jakarta/Tomcat.\\
+Il Web Server Apache presenta un'architettura modulare, quindi a ogni richiesta del client vengono svolte funzioni specifiche da ogni modulo di cui è composto, come unità indipendenti. Ciascun modulo si occupa di una funzionalità, e il controllo è gestito dal core.\\
+Il core è sostanzialmente un daemon che esegue un ciclo di polling, attraverso il quale vengono interrogate continuamente le linee logiche da cui possono pervenire messaggi di richiesta. Il core provvede al passaggio della richiesta ai vari moduli in modo sequenziale, usando i parametri di uscita di un modulo come parametri di accesso per il successivo, creando così l'illusione di una comunicazione orizzontale fra moduli.\\
+\begin{center}
+\includegraphics[scale=0.7]{core.png}
+\end{center}
+Esempio di installazione si LAMP Server su Ubuntu:\\
+\tab\texttt{\# apt-get install lamp-server\^}\tab metapacchetto\\
+\tab\texttt{\# apt-get install phpmyadmin}\\
+Al termine dell'installazione abbiamo a disposizione un web server Apache 2, un database server MySQL, PHP 5 con il modulo per Apache e la libreria \texttt{gd} e phpMyAdmin per la gestione dei database.\\
+Apache normalmente va a leggere i files che compongono il sito nella cartella \texttt{/var/www}. Questa posizione viene definita \texttt{DocumentRoot}, e può essere cambiata. Tutti i files di configurazione di Apache risiedono in \texttt{/etc/apache2}.\\
+In particolare:
+\begin{itemize}
+\item \textbf{apache2.conf:} file con la configurazione iniziale di Apache.
+\item \textbf{ports.conf:} specifica le porte di ascolto del demone Apache.
+\item \textbf{conf-available:} configurazioni aggiuntive disponibili.
+\item \textbf{conf-enabled:} configurazioni aggiuntive attive.
+\item \textbf{mods-available:} moduli disponibili.
+\item \textbf{mods-enabled:} moduli attivi.
+\item \textbf{sites-available:} siti disponibili.
+\item \textbf{sites-enabled:} siti attivi.
+\end{itemize}
+Se create una pagina HTML e la copiate in \texttt{/var/www} potete puntare il browser verso \texttt{http://myserver.mydomain/mypage.html}. Se puntate il browser su \texttt{http://myserver.mydomain/phpmyadmin} trovate l'interfaccia di gestione di mysql.\\
 
 
 
