@@ -1773,6 +1773,103 @@ In particolare:
 \item \textbf{sites-enabled:} siti attivi.
 \end{itemize}
 Se create una pagina HTML e la copiate in \texttt{/var/www} potete puntare il browser verso \texttt{http://myserver.mydomain/mypage.html}. Se puntate il browser su \texttt{http://myserver.mydomain/phpmyadmin} trovate l'interfaccia di gestione di mysql.\\
+\paragraph{VirtualHost:} permette a un server web di ospitare più di un dominio. Utile in ambienti condivisi di web hosting poiché permette di collocare centinaia di siti web in un unico server fisico. Implementato anche nei moderni software di web server: Apache, Nginx, IIS, Lighttpd. In Apache è implementato dalla direttiva \texttt{VirtualHost}.\\
+Un esempio di VirtualHost è dato dal server \texttt{www} del DAIS, che ospita svariati siti web. Un esempio di questi è un progetto denominato \texttt{sanitaveneto}. Si vuole che il server Web risponda alle richieste per \texttt{sanitaveneto.dais.unive.it} e \texttt{sanitaveneto.ds.unive.it}.\\
+Anzitutto è necessario definire una entry nel server DNS che faccia puntare \texttt{sanitaveneto} al server \texttt{www}:\\
+\tab\texttt{Sanitaveneto A 157.138.20.11}\tab (in questo caso bisogna inserire\tab anche il reverse)\\
+Oppure\\
+\tab\texttt{sanitaveneto CNAME www}\\
+Successivamente bisogna creare la directory dove il sito sarà ospitato e i relativi files di log:\\
+\tab\texttt{\# mkdir /var/www/sanitaveneto}\\
+\tab\texttt{\# mkdir /var/log/apache2/sanitaveneto}\\
+Ricordiamoci di dare gli accessi alla directory del sito all'utente \texttt{www-data}:\\
+\tab\texttt{\# chown -R www-data:www-data /var/www/sanitaveneto}\\
+Creiamo il file di configurazione del VirtualHost:\\
+\tab\texttt{\# nano /etc/apache2/sites-available/sanitaveneto}\\
+E inseriamo il seguente testo:\\
+\tab\texttt{<VirtualHost *:80>}\\
+\tab\tab\texttt{ServerAdmin webmaster@dsi.unive.it}\\
+\tab\tab\texttt{ServerName sanitaveneto.dais.unive.it}\\
+\tab\tab\texttt{DocumentRoot /var/www/sanitaveneto/}\\
+\tab\tab\texttt{ErrorLog /var/log/apache2/sanitaveneto.error.log}\\
+\tab\tab\texttt{LogLevel warn}\\
+\tab\tab\texttt{CustomLog /var/log/apache2/sanitaveneto.access.log combined}\\
+\tab\tab\texttt{ServerSignature Off}\\
+\tab\texttt{</VirtualHost>}\\
+Ora non resta che attivare il sito e riavviare apache:\\
+\tab\texttt{\# a2ensite sanitaveneto.conf}\\
+\tab\texttt{\# service apache2 restart}\\
+Comandi utili di Apache:
+\begin{itemize}
+\item \texttt{\# a2ensite <nomesito>} abilita un sito web presente
+in sites-avaiable.
+\item \texttt{\# a2dissite <nomesito>} disabilita un sito web
+presente in sites-enabled.
+\item \texttt{\# a2enmod <modulo>} abilita un modulo di apache
+disponibile in mods-avaiable.
+\item \texttt{\# a2dismod <modulo>} disabilita un modulo di apache.
+\item \texttt{\# ab} apache benchmark.
+\item \texttt{\# service apache <start|restart|stop>} per avviare, riavviare e fermare un servizio.
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.6]{comandiapache.png}
+\end{center}
+\paragraph{SSL} La crittografia è importante per la sicurezza, deve essere usata in tutte quelle applicazioni che richiedono autenticazione (come un form web) e che trasmettono dati sensibili. Non protegge completamente da attacchi informatici, ma complica il lavoro a chi nutre cattive intenzioni. La crittografia può anche essere utilizzata per attaccare gli utenti, come nel caso del \texttt{ransomware} WannaCry.\\
+\textbf{Transport Layer Security (TLS)} e il suo predecessore \textbf{Secure Sockets Layer (SSL)} sono dei protocolli crittografici usati nel campo delle telecomunicazioni e dell'informatica che permettono una comunicazione sicura dal sorgente al destinatario (end-to-end) su reti TCP/IP fornendo un'autenticazione, integrità dei dati e cifratura operando al di sopra del livello di trasporto.\\
+Esempi di applicazione di SSL/TLS sono nei protocolli HTTPS, SMTPS, POP3S, IMAPS, ecc..\\
+Vi sono varie implementazioni di SSL, quella più famosa è probabilmente OpenSSL, implementata per tutti i sistemi Linux.\\
+\paragraph{OpenSSL} Nato nel 1998, il progetto \textbf{OpenSSL} è un'implementazione open source del protocollo SSL/TLS. La libreria principale è scritta in linguaggio C e implementa funzioni di crittografia basilari fornendo strumenti per l'attivazione di varie funzionalità avanzate. Ne esistono versioni per la gran parte dei sistemi operativi UNIX (Solaris, Linux, OS X e alcune versioni open source di BSD) e Microsoft Windows. Ideato come un set di strumenti aperto per la crittografia del codice e dello scambio di dati che avviene su Internet, oggi è utilizzato da circa il 3/4 dei server della Rete.\\
+OpenSSL ha conquistato, suo malgrado, l'attenzione della stampa internazionale a causa di una sua falla di sicurezza sfruttata dall'attacco Heartbleed.\\
+OpenSSL permette di utilizzare sia certificati rilasciati da certification authorities valide, sia autogenerati (in questo caso i browser avvertiranno l'utente che il certificato può non essere sicuro).\\
+Un esempio di uso di OpenSSL è la combinazione di Apache e SSL, che risulta in HTTPS: un protocollo simile ad HTTP che permette connessione crittografate per garantire la sicurezza dei dati. Un server HTTPS si può realizzare tramite il modulo SSL di Apache e risponderà sulla porta 443.\\
+Ora proporremo un esempio facendo finta di aver già generato un certificato SSL.\\
+Attiviamo il modulo SSL e riavviamo Apache:\\
+\tab\texttt{\# a2enmod ssl \&\& service apache2 restart}\\
+Creiamo una directory dove mettere il certificato appena generato:\\
+\tab\texttt{\# mkdir /etc/apache/ssl}\\
+Creiamo il certificato:\\
+\tab\texttt{\# sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048}\\
+\tab\texttt{-keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt}\\
+Configuriamo ora Apache creando un nuovo sito:\\
+\tab\texttt{\# nano /etc/apache2/sites-available/default-ssl.conf}\\
+E vi inseriamo la configurazione:\\
+\texttt{
+\tab <IfModule mod\_ssl.c>\\
+\tab\tab Listen: 443\\
+\tab\tab <VirtualHost \_default\_:443>\\
+\tab\tab\tab ServerAdmin webmaster@mydomain\\
+\tab\tab\tab ServerName myhttps.mydomain\\
+\tab\tab\tab ServerAlias www.myhttps.mydomain\\
+\tab\tab\tab DocumentRoot /var/www/html\\
+\tab\tab\tab ErrorLog \$\{APACHE\_LOG\_DIR\}/error.log\\
+\tab\tab\tab CustomLog \$\{APACHE\_LOG\_DIR\}/access.log combined\\
+\tab\tab\tab SSLEngine on\\
+\tab\tab\tab SSLCertificateFile /etc/apache2/ssl/apache.crt\\
+\tab\tab\tab SSLCertificateKeyFile /etc/apache2/ssl/apache.key\\
+\tab\tab\tab BrowserMatch "MSIE [26]"\textbackslash\\
+\tab\tab\tab\tab nokeepalive ssl-unclean-shutdown\textbackslash\\
+\tab\tab\tab\tab downgrade-1.0 force-response-1.0\\
+\tab\tab\tab BrowserMatch "MSIE [179]" ssl-unclean-shutdown\\
+\tab\tab</VirtualHost>\\
+\tab</IfModule>\\
+}\\
+Abilitiamo il sito:\\
+\tab\texttt{\# a2ensite default-ssl.conf}\\
+Riavviamo apache:\\
+\tab\texttt{\# service apache2 restart}\\
+A questo punto puntiamo il server verso \texttt{https://myporta.mydomain/mypage.html} e dovremo vedere il nostro sito protetto con SSL.\\
+Un esempio dell'uso di apache sono i sistemi di monitoring.\\
+\paragraph{Sistemi di monitoring} 
+\begin{itemize}
+\item \textbf{Sistemi di basso livello:} controllo dello stato di salute dei dischi, controllo dello stato del RAID, controllo delle memorie ECC, sensori di temperatura, indicatori di velocità delle ventole, ecc..
+\item \textbf{Sistemi a livello SO:} Lm-sensors, hddtemp, smartd che controllano i sistemi di basso livello, watchdog che controlla errori del sistema operativo.
+\end{itemize}
+Ad un livello più alto troviamo i software di monitoring e di raccolta dati del sistema:
+\begin{itemize}
+\item \textbf{Nagios:} permette di controllare un grande numero di host, monitorando hardware e software dei vari host e lo stato dei servizi ospitati.
+\item \textbf{Mrtg, mailgraph, cacti, ganglia:} raccolgono statistiche e le interpretano sotto forma di grafici per descrivere l'uso del sistema.
+\end{itemize}
+I software sopracitati possono acquisire i dati da una varietà di fonti eterogenee, spesso usando metodi ad-hoc. Esiste tuttavia un protocollo per il monitoring dei dispositivi, il Simple Network Management Protocol (SNMP).
 
 
 
