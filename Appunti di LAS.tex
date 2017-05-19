@@ -1649,6 +1649,25 @@ Per la configurazione, editare \texttt{/etc/exports}, che ha la sintassi \texttt
 \tab\texttt{/home 157.138.22.21(rw, no\_root\_squash)}\\
 \tab\texttt{/home 157.138.0.0/16
 (rw,async,no\_subtree\_check,sec=krb5:krb5i:krb5p)}\\
+Per la gestione del servizio, invece:\\
+\tab\texttt{\# service nfs-kernel server restart}\\
+\begin{center}
+\includegraphics[scale=0.60]{fsesempioconf.png}
+\end{center}
+Per utilizzare l'area condivisa ho tre modi:
+\begin{itemize}
+\item Effettuando il mount manuale:\\
+	\tab\texttt{\# sudo mount 192.168.1.1:/home /mnt/nfs/home}
+\item Inserendo il mount \texttt{/etc/fstab} in modo che sia montato in avvio:\\
+	\tab\texttt{192.168.1.1:/home /mnt/nfs/home nfs rw,user,auto 0 0}
+\item Usando \textbf{automount}: soluzione migliore in caso di molti client e molti utenti che non hanno accesso diretto all'utente amministratore (\texttt{root}) e/o ai files di sistema (\texttt{/etc/fstab}).
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.6]{esdfs1.png}\\
+\includegraphics[scale=0.6]{esdfs2.png}
+\end{center}
+
+
 
 
 
