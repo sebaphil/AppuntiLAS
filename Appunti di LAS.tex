@@ -1696,6 +1696,47 @@ Andiamo nella directory \texttt{/nfs/dasarah}:\\
 \begin{center}
 \includegraphics[scale=0.6]{autofslab.png}
 \end{center}
+\paragraph{CIFS} Prima di proseguire, è importante definire il concetto di \textbf{Roaming User Profile}: si tratta di un concetto chiave nella famiglia di sistemi operativi Windows NT, in quanto permette a ogni utente con un computer collegato a un dominio Windows Server di effettuare il login su qualunque computer nello stesso network e accedere ai suoi documenti, applicazioni, ecc.. Questo concetto è diverso dalle home esportate, in quanto queste sono cartelle condivise presenti in \texttt{Z} da usare per salvare i files importanti.\\
+Va tenuto conto che i profili sono in una cartella condivisa, ma vengono scaricati e caricati dal server ogni volta che fate login e logout rispettivamente: non sono live, e fanno spesso fatica a sincronizzarsi.\\
+In Windows, la condivisione dei files è gestita dal protocollo CIFS, di cui esiste un'implementazione in Linux di nome SAMBA.\\
+CIFS è un protocollo standard che permette la condivisione di files e risorse all'interno di una LAN. È una versione migliorata del protocollo Microsoft SMB, e nasce con Windows 2000 come unico protocollo di condivisione risorse.\\
+Nonostante molte migliorie, resta ancora inefficiente in reti di medie/grosse dimensioni. Ma è comunque uno dei migliori protocolli per una realizzazione di DFS.\\
+Dal punto di vista tecnico, CIFS permette l'accesso multiplo allo stesso file evitando conflitti tramite file locking, è ottimizzato per le connessioni lente, supporta sia il trasferimento dei file anonimo sia previa autenticazione, è scalabile, supporta varie codifiche dei caratteri, e per riferirsi a un file remoto non devono necessariamente montare il FS remoto ma possono usare un path UNC (Uniform Naming Convention, es.: \texttt{\textbackslash\textbackslash nas\textbackslash bustepaga\textbackslash pagamiseradisettembre.pdf}).\\
+Per condividere una cartella o un file, cliccateci col tasto destro, scegliete "condividi", impostate i permessi, e alla fine sulla barra degli indirizzi del file explorer digitate\\
+\tab\texttt{\textbackslash\textbackslash server\textbackslash cartellaappenacondivisa}\\
+CIFS ha un problema non indifferente. In un ambiente multiutente, spesso vi è competizione tra gli utenti stessi per l'uso delle risorse. Una delle più importanti, poiché l'uso non è limitato al periodo in cui l'utente sta effettivamente operando sulla macchina, è lo spazio di memorizzazione. Questo spazio, per ragioni di presentazioni, affidabilità e disponibilità continua, è generalmente molto più costoso di quanto lo sia l'equivalente nell'ambito dei personal computer. \\
+Diventa necessario proteggere il sistema e gli altri utenti da chi vuole monopolizzare la risorsa sia volontariamente, che involontariamente (programmi errati che esauriscono lo spazio del disco) in quanto una volta terminato lo spazio sul disco, nessun utente può lavorare.\\
+Per far fronte a questo problema, è stato introdotto il concetto di \textbf{quota disco}: un limite oltre al quale uno specifico utente non può più occupare spazio.\\
+La quota può essere usata anche su FS locali, ma trova la sua più naturale applicazione quando le home directory (o altri dati personali) degli utenti vengono condivise tramite NAS. In Linux il sistema di quota viene gestito direttamente dal Kernel, mentre le utilities per la gestione sono presenti nel pacchetto \texttt{quota}.\\
+La quota, se presente, viene automaticamente usata anche per le operazioni sui FS esportati, tuttavia se si vuole poter conoscere le informazioni sulla quota disponibile (con il comando \texttt{quota}) anche sui client, è necessario usare il daemon \texttt{rquotad}.\\
+La quota è espressa in quattro quantità:
+\begin{itemize}
+\item Soft quota sul numero di blocchi, al suo raggiungimento si ottiene un warning.
+\item Hard quota sul numero di blocchi, al suo raggiungimento viene negata ogni richiesta di allocazione.
+\item Soft quota sugli inode, ovvero un warning quando vengono creati un certo numero di files o directories.
+\item Hard quota sugli inode, ovvero alla creazione di un certo numero di files o directories viene negata ogni creazione successiva.
+\end{itemize}
+Per entrambe le soft quota, inoltre, esiste il \textbf{grace period}. Se oltre questo periodo l'utente si mantiene sopra la soglia della soft quota, ogni altra allocazione/creazione di file o directory verrà negata.\\
+Per installare il pacchetto \texttt{quota} si usa il comando\\
+\tab\texttt{apt-get install quota}\\
+Supponiamo di voler mettere la quota su \texttt{/user}. Editiamo il file \texttt{/etc/fstab}, abilitando la quota sulla riga corrispondente al FS \texttt{/user}:\\
+\tab\texttt{/dev/sda5\tab /user\tab ext4\tab usrquota,grpquota\tab 0 1}\\
+Rimontiamo \texttt{/user} abilitando le quote:\\
+\tab\texttt{mount -o remount /user}\\
+Dopodiché, eseguiamo il comando\\
+\tab\texttt{quotacheck -cu /user /* c:crea, u:user, (g:group) */}\\
+Questo comando crea un nuovo file delle quote nella directory principale del FS. Questo è un file indicizzato utilizzato dallo strumento per la gestione della quota per tenere traccia dello spazio disco usato dall'utente. Esso contiene anche i limiti per gli utenti e le opzioni configurate.\\
+Abilitiamo la quota col comando\\
+\tab\texttt{quotaon /user}\\
+A questo punto abbiamo un sistema di quota sulla partizione \texttt{/user} che potete gestire con i comandi \texttt{edquota}, \texttt{setquota} e \texttt{repquota}.\\
+
+
+
+
+
+
+
+
 
 
 
