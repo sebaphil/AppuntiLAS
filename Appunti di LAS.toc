@@ -1,0 +1,80 @@
+\select@language {italian}
+\select@language {italian}
+\contentsline {chapter}{\numberline {1}Introduzione}{4}{chapter.1}
+\contentsline {paragraph}{Sistema:}{4}{section*.2}
+\contentsline {paragraph}{Cosa fa un Sys Admin?}{4}{section*.3}
+\contentsline {paragraph}{Perch\IeC {\'e} gli utenti sono i nemici del Sys Admin?}{5}{section*.4}
+\contentsline {paragraph}{Cosa deve saper fare, in conclusione, un Sys Admin?}{5}{section*.5}
+\contentsline {chapter}{\numberline {2}Hardware e RAID}{6}{chapter.2}
+\contentsline {paragraph}{La scheda madre}{7}{section*.6}
+\contentsline {paragraph}{Le memorie}{7}{section*.7}
+\contentsline {paragraph}{Le Memorie Centrali}{7}{section*.8}
+\contentsline {paragraph}{Le Memorie di Massa}{7}{section*.9}
+\contentsline {paragraph}{La CPU.}{7}{section*.10}
+\contentsline {paragraph}{Architettura di un Host (Server)}{8}{section*.11}
+\contentsline {paragraph}{RAID - Redundant Arrat of Inexpensive/Independent Disks}{9}{section*.12}
+\contentsline {chapter}{\numberline {3}Network Attached Storage - NAS}{13}{chapter.3}
+\contentsline {paragraph}{Quali sono gli utilizzi del NAS?}{13}{section*.13}
+\contentsline {chapter}{\numberline {4}Storage Area Network - SAN}{14}{chapter.4}
+\contentsline {chapter}{\numberline {5}Canali di Trasmissione}{16}{chapter.5}
+\contentsline {paragraph}{Confronto banda/velocit\IeC {\`a}:}{17}{section*.14}
+\contentsline {paragraph}{Doppino telefonico (rame):}{17}{section*.15}
+\contentsline {paragraph}{Fibra ottica:}{17}{section*.16}
+\contentsline {paragraph}{WiFi:}{17}{section*.17}
+\contentsline {chapter}{\numberline {6}Networking}{18}{chapter.6}
+\contentsline {paragraph}{Il protocollo TCP/IP:}{18}{section*.18}
+\contentsline {paragraph}{IPv4:}{20}{section*.19}
+\contentsline {paragraph}{Classi di indirizzi IPv4:}{20}{section*.20}
+\contentsline {paragraph}{Approfondimento sugli indirizzi speciali.}{22}{section*.21}
+\contentsline {chapter}{\numberline {7}Filesystems}{24}{chapter.7}
+\contentsline {paragraph}{Directory:}{25}{section*.22}
+\contentsline {paragraph}{Struttura di un Filesystem in Linux/Unix}{25}{section*.23}
+\contentsline {chapter}{\numberline {8}Boot di un Sistema Operativo}{29}{chapter.8}
+\contentsline {paragraph}{BIOS:}{29}{section*.24}
+\contentsline {paragraph}{UEFI:}{29}{section*.25}
+\contentsline {paragraph}{Il Boot di Windows:}{30}{section*.26}
+\contentsline {paragraph}{Il Boot di Linux:}{30}{section*.27}
+\contentsline {paragraph}{LiLO:}{30}{section*.28}
+\contentsline {paragraph}{GRUB:}{30}{section*.29}
+\contentsline {paragraph}{Caricamento del kernel:}{30}{section*.30}
+\contentsline {paragraph}{Init e Runlevel.}{31}{section*.31}
+\contentsline {paragraph}{Processo di init:}{31}{section*.32}
+\contentsline {paragraph}{Il processo di init in dettaglio:}{31}{section*.33}
+\contentsline {paragraph}{Partizionamento:}{32}{section*.34}
+\contentsline {paragraph}{L'area di swap: }{32}{section*.35}
+\contentsline {chapter}{\numberline {9}La shell}{34}{chapter.9}
+\contentsline {paragraph}{La shell}{34}{section*.36}
+\contentsline {paragraph}{Tipi di shell in Unix/Linux e OS X:}{34}{section*.37}
+\contentsline {paragraph}{Tipi di shell in Windows:}{34}{section*.38}
+\contentsline {paragraph}{Caratteri speciali della bash:}{35}{section*.39}
+\contentsline {paragraph}{Reindirizzamento della bash:}{35}{section*.40}
+\contentsline {paragraph}{Comandi bash:}{36}{section*.41}
+\contentsline {paragraph}{Variabili in bash:}{36}{section*.42}
+\contentsline {chapter}{\numberline {10}Utenti e gruppi}{37}{chapter.10}
+\contentsline {paragraph}{Comandi utili per la gestione di utenti/gruppi:}{37}{section*.43}
+\contentsline {paragraph}{Quota.}{38}{section*.44}
+\contentsline {chapter}{\numberline {11}Gestione della Rete}{40}{chapter.11}
+\contentsline {chapter}{\numberline {12}Servizi di Rete}{41}{chapter.12}
+\contentsline {paragraph}{NTP.}{42}{section*.45}
+\contentsline {paragraph}{DHCP (Dynamic Host Configuration Protocol):}{42}{section*.46}
+\contentsline {paragraph}{Come funziona?}{43}{section*.47}
+\contentsline {paragraph}{Domain Name Server - DNS.}{43}{section*.48}
+\contentsline {chapter}{\numberline {13}Autenticazione}{46}{chapter.13}
+\contentsline {paragraph}{Definizione.}{46}{section*.49}
+\contentsline {paragraph}{NSS e PAM.}{46}{section*.50}
+\contentsline {paragraph}{La strada verso LDAP e KERBEROS, Active Directory e Autenticazione Centralizzata.}{48}{section*.51}
+\contentsline {paragraph}{Schema di funzionamento di Kerberos:}{49}{section*.52}
+\contentsline {chapter}{\numberline {14}Posta}{52}{chapter.14}
+\contentsline {paragraph}{Struttura }{52}{section*.53}
+\contentsline {paragraph}{Protocolli}{53}{section*.54}
+\contentsline {paragraph}{Differenze tra POP e IMAP:}{54}{section*.55}
+\contentsline {paragraph}{Spam:}{56}{section*.56}
+\contentsline {paragraph}{Greylisting:}{56}{section*.57}
+\contentsline {paragraph}{RBL:}{56}{section*.58}
+\contentsline {paragraph}{SPF:}{57}{section*.59}
+\contentsline {paragraph}{Spamassasin:}{57}{section*.60}
+\contentsline {paragraph}{Controlli MTA:}{57}{section*.61}
+\contentsline {paragraph}{AMAVIS:}{58}{section*.62}
+\contentsline {chapter}{\numberline {15}Filesystem Distribuito}{61}{chapter.15}
+\contentsline {paragraph}{File Server:}{61}{section*.63}
+\contentsline {paragraph}{NFS:}{62}{section*.64}
