@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.4)  22 MAY 2017 10:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.4)  22 MAY 2017 10:21
 entering extended mode
 **"./Appunti di LAS.tex"
 ("Appunti di LAS.tex"
@@ -1354,12 +1354,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 1897--1898
  []
 
 [77]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1943.
- [78]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1943.
+Underfull \hbox (badness 10000) in paragraph at lines 1931--1932
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1944.
+[78]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1944.
  ("Appunti di LAS.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1943.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1943.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1944.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1944.
 
 Package rerunfilecheck Info: File `"Appunti di LAS".out' has not changed.
 (rerunfilecheck)             Checksum: 58557B453D78CEFDFFA5262FC791DA42;899.
@@ -1367,7 +1371,7 @@ Package rerunfilecheck Info: File `"Appunti di LAS".out' has not changed.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1943.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1944.
  ) 
 Here is how much of TeX's memory you used:
  7488 strings out of 493334
@@ -1383,7 +1387,7 @@ Here is how much of TeX's memory you used:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Appunti di LAS.pdf" (78 pages, 2153516 bytes).
+Output written on "Appunti di LAS.pdf" (78 pages, 2153869 bytes).
 PDF statistics:
  600 PDF objects out of 1000 (max. 8388607)
  179 named destinations out of 1000 (max. 500000)
