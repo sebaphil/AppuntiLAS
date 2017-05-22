@@ -1870,6 +1870,64 @@ Ad un livello più alto troviamo i software di monitoring e di raccolta dati del
 \item \textbf{Mrtg, mailgraph, cacti, ganglia:} raccolgono statistiche e le interpretano sotto forma di grafici per descrivere l'uso del sistema.
 \end{itemize}
 I software sopracitati possono acquisire i dati da una varietà di fonti eterogenee, spesso usando metodi ad-hoc. Esiste tuttavia un protocollo per il monitoring dei dispositivi, il Simple Network Management Protocol (SNMP).
+\chapter{Virtualizzazione}
+Con "virtualizzazione" si intende il processo di creazione di una rappresentazione virtuale di un oggetto.\\
+In ambito informatico, è possibile virtualizzare applicazioni, server, storage e reti. È il miglior modo per ridurre le spese del settore informatico aumentando al tempo stesso efficienza e scalabilità.\\
+Tra i vantaggi, abbiamo:
+\begin{itemize}
+\item Costi di investimento iniziale e operativi ridotti.
+\item Downtime ridotto al minimo o eliminato.
+\item Miglioramento di produttività, efficienza, agilità e
+reattività dell'IT.
+\item Provisioning (assegnazione) più rapido di applicazioni e risorse.
+\item Abilitazione di Business Continuity e Disaster
+Recovery.
+\item Semplificazione della gestione del data center.
+\end{itemize}
+Possiamo distinguere, inoltre, quattro tipi di virtualizzazione:
+\begin{itemize}
+\item Virtualizzazione dei server.
+\item Virtualizzazione del desktop.
+\item Virtualizzazione della rete.
+\item Software-Defined Storage.
+\end{itemize}
+\paragraph{Virtualizzazione dei Server} La maggior parte dei server sfrutta meno del 15\% della propria capacità; ciò comporta la proliferazione dei server e la creazione di ambienti (inutilmente) complessi. La virtualizzazione dei server risolve queste problematiche consentendo di eseguire più sistemi operativi su un unico server fisico sotto forma di macchine virtuali, ognuna con accesso alle risorse di elaborazione del server sottostante.\\
+\paragraph{Virtualizzazione del Desktop} La distribuzione dei desktop come servizio gestito offre la possibilità di rispondere più prontamente a opportunità ed esigenze in continua evoluzione. Ad esempio, si possono avere dei thin client (elaboratori poco prestanti) che avviano una versione ridotta del sistema operativo e si collegano tramite un servizio di desktop remoto a una macchina virtuale ospitata in un server del datacenter. È possibile ridurre i costi e migliorare il servizio fornendo in modo rapido e facile desktop e applicazioni virtualizzati a filiali, dipendenti esterni, lavoratori mobili che sfruttano piattaforme mobile come i tablet.\\
+\paragraph{Virtualizzazione della Rete} La virtualizzazione della rete consiste nella riproduzione completa di una rete fisica a livello software. Le applicazioni vengono eseguite sulla rete virtuale proprio come avviene su una rete fisica. Presenta dispositivi e servizi di rete logici, ovvero porte, switch, router, omber, unità di bilanciamento del carico, VPN e altro ancora, ai carichi di lavoro connessi. Le reti virtuali offrono le stesse funzionalità e garanzie di una rete fisica, ma assicurano i vantaggi operativi e l'indipendenza dall'hardware tipici della virtualizzazione.\\
+\paragraph{Software-Defined Storage} Gli enormi volumi di dati e le applicazioni in tempo reale fanno impennare la domanda di storage. La virtualizzazione dello storage astrae i dischi e le unità flash all'interno dei server, li combina in pool di storage a elevate prestazioni e li distribuisce sotto forma di software. Il Software-Defined Storage è un nuovo approccio allo storage che offre un modello operativo molto più efficiente, come Google Drive, One Drive, Dropbox etc..\\
+\paragraph{La macchina virtuale} Un sistema informatico virtuale viene chiamato "macchina virtuale" (VM) ed è un contenitore software totalmente isolato, dotato di un sistema operativo e applicazioni. Ogni VM è completamente indipendente. La collocazione di più macchine virtuali su un singolo computer consente l'esecuzione di più sistemi operativi e applicazioni su un unico server fisico, detto "host".\\
+Un sottile strato software, detto hypervisor, separa le VM dall'host e alloca le risorse di elaborazione a ciascuna VM in modo dinamico, a seconda delle necessità.\\
+Una VM è dotata di queste proprietà:
+\begin{itemize}
+\item \textbf{Partizionamento:}
+	\begin{itemize}
+	\item Esecuzione di più sistemi operativi su una macchina fisica.
+	\item Suddivisione delle risorse di sistema tra le macchine virtuali.
+	\end{itemize}
+\item \textbf{Isolamento:}
+	\begin{itemize}
+	\item Isolamento di guasti e problemi di sicurezza a livello di hardware.
+	\item Protezione delle prestazioni grazie a controlli avanzati delle risorse.
+	\end{itemize}
+\item \textbf{Incapsulamento:}
+	\begin{itemize}
+	\item Salvataggio su file dell'intero stato di una macchina virtuale.
+	\item Spostamento e copia delle VM con estrema facilità, in modo analogo ai files.
+	\end{itemize}
+\item \textbf{Indipendenza dall'hardware:}
+	\begin{itemize}
+	\item Provisioning o migrazione delle VM a qualsiasi server fisico.
+	\end{itemize}
+\end{itemize}
+\paragraph{Sistemi di virtualizzazione:}
+\begin{itemize}
+\item \textbf{IBM 370} (nel 1970)
+\item \textbf{VMWare:} la prima azienda a occuparsi di virtualizzazione per processori con architettura x86, nel '98 cominciò a diventare famoso tra le riviste di Linux; oggigiorno è ora leader mondiale con VMWare VSphere.
+\item \textbf{Microsoft Hyper-V:} sistema di virtualizzazione di casa Microsoft distribuito con Windows Server dalla versione 2008.
+\item \textbf{XEN:} non mira a creare un'emulazione dell'hardware di un generico computer x86, ma piuttosto a regolare e controllare l'accesso alle risorse fisiche della macchina da parte delle varie istanze delle macchine virtuali; questo approccio prende il nome di \texttt{paravirtualizzazione} ed è simile a ciò che si utilizza nel campo dei mainframe e dei supercomputer.
+\item \textbf{KVM:} Kernel-based Virtual Machine (KVM) è un'infrastruttura di virtualizzazione del kernel Linux; KVM attualmente supporta una completa virtualizzazione usando Intel VT o AMD-V; comprende un supporto limitato alla paravirtualizzazione disponibile per gli host virtuali Linux e Windows nella forma di driver di rete paravirtuale; KVM inizialmente era implementato come un modulo kernel, ora è integrato direttamente kernel.
+\item \textbf{Proxmox:} sistema basato su KVM (in utilizzo nel nostro dipartimento).
+\end{itemize}
 
 
 
