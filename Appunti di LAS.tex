@@ -1929,7 +1929,30 @@ Una VM è dotata di queste proprietà:
 \item \textbf{Proxmox:} sistema basato su KVM (in utilizzo nel nostro dipartimento).
 \end{itemize}
 Mentre per un datacenter si utilizzano sistemi operativi progettati per la virtualizzazione, quindi basati su un numero relativamente basso di righe di codice, per gli home users si utilizzano programmi che girano sopra al OS. Questo riduce le prestazioni e complica un po' la vita a chi realizza questi software, ma sono soluzioni aperte a tutti. Degli esempi sono dati da VirtualBox, VirtualPC, VMWare Player, Qemu, ecc..\\
-
+\chapter{Server di stampa}
+Un server di stampa permette la gestione centralizzata di una o più stampanti, di rete o non, che possono essere dislocate all'interno di una struttura IT.\\
+Ogni stampante di rete ormai è un printserver, in quanto fornisce il proprio servizio di stampa a più tipologie di accesso: web printing, ipp, lpd, netbios, ecc..\\
+Quando si hanno più stampanti di rete è consigliabile la gestione tramite un host detto printer server. Il printer server è collegato direttamente alle stampanti: fisicamente se la stampante ha connettori USB/Parallelo/Seriale, via rete se è dotata di un modulo Net. Generalmente si collega la stampante fisicamente se è posta a una distanza di circa due metri dal server.\\
+Vediamo ora il server di stampa nei vari OS:
+\begin{itemize}
+\item \textbf{Linux/OS X:} il server di stampa è interamente gestito dal sistema CUPS, successore di lpd e pienamente compatibile con esso.
+\item \textbf{Windows client:} il sistema di condivisione file e stampanti permette una gestione "lite" di una o più stampanti condivise.
+\item \textbf{Windows server:} comprende un vero e proprio printer server che gestisce le varie stampanti connesse.
+\end{itemize}
+\paragraph{Print Server WIndows 2012} È necessario aprire Server Manager e installare la regola "Print Service"; il sistema si occuperà di installare eventuali servizi dipendenti. Si installa una stampante con il solito metodo: Start, Dispositivi e Stampanti, Aggiungi Stampante. Una volta aggiunta, cliccare col tasto destro, scegliere "Condividi/Share", e tranne rari casi, il lavoro è finito.\\
+\paragraph{CUPS (Common UNIX Printing System)} Su Ubuntu, CUPS si installa con il comando\\\tab\texttt{\# apt-get install cups}\\
+Il comportamento del server CUPS viene configurato attraverso le direttive contenute nel file \texttt{/etc/cups/cupsd.conf}. CUPS può essere configurato e monitorato utilizzando un'interfaccia web disponibile all'indirizzo \texttt{http://localhost:631/admin}, ma bisogna essere admin:\\
+\tab\texttt{\# usermod -aG lpadmin username}\\
+Ad ogni modifica del file \texttt{cupsd.conf} è necessario riavviare il servizio (in alcune versioni conviene fermare il servizio, effettuare le modifiche e poi riavviarlo). Spesso CUPS mantiene le modifiche fatte tramite l'interfaccia web in memoria per farne il push allo stop del servizio\\
+\tab\texttt{\# service cups <start|stop|restart>}\\
+\paragraph{Comandi per al gestione della coda di stampa:}
+\begin{itemize}
+\item \texttt{lpstat:} visualizza diverse informazioni sulle stampanti installate all'interno del sistema, ad esempio attraverso l'opzione \texttt{-p} il comando restituisce l'elenco delle stampanti.
+\item \texttt{lpq:} restituisce l'elenco dei job accodati nella stampante di default o di una specifica stampante (\texttt{lpq -P stampante}).
+\item \texttt{lprm:} rimuove i job lavori di cui si conosce l'id (ottenuto attraverso \texttt{lpq}, per esempio: \texttt{lprm 298}.
+\item \texttt{lpr:} invia un job a una coda di stampa; è possibile specificare la stampante tramite l'opzione \texttt{-P} (per esempio, \texttt{lpr -P stampante documento.estensione}).
+\end{itemize}
+Tutti questi comandi sono ereditati dal precedente sistema di stampa (\texttt{lpr}).\\
 
 
 

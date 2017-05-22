@@ -94,3 +94,7 @@
 \contentsline {paragraph}{Software-Defined Storage}{77}{section*.76}
 \contentsline {paragraph}{La macchina virtuale}{77}{section*.77}
 \contentsline {paragraph}{Sistemi di virtualizzazione:}{78}{section*.78}
+\contentsline {chapter}{\numberline {18}Server di stampa}{79}{chapter.18}
+\contentsline {paragraph}{Print Server WIndows 2012}{79}{section*.79}
+\contentsline {paragraph}{CUPS (Common UNIX Printing System)}{79}{section*.80}
+\contentsline {paragraph}{Comandi per al gestione della coda di stampa:}{80}{section*.81}
