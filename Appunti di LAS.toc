@@ -98,3 +98,13 @@
 \contentsline {paragraph}{Print Server WIndows 2012}{79}{section*.79}
 \contentsline {paragraph}{CUPS (Common UNIX Printing System)}{79}{section*.80}
 \contentsline {paragraph}{Comandi per al gestione della coda di stampa:}{80}{section*.81}
+\contentsline {chapter}{\numberline {19}Database}{81}{chapter.19}
+\contentsline {paragraph}{DBMS}{81}{section*.82}
+\contentsline {paragraph}{MySQL}{82}{section*.83}
+\contentsline {paragraph}{PostgreSQL}{82}{section*.84}
+\contentsline {paragraph}{Oracle}{82}{section*.85}
+\contentsline {paragraph}{Microsoft SQL Server}{83}{section*.86}
+\contentsline {paragraph}{MySQL su Ubuntu:}{83}{section*.87}
+\contentsline {chapter}{\numberline {20}Firewall}{85}{chapter.20}
+\contentsline {paragraph}{DMZ}{85}{section*.88}
+\contentsline {paragraph}{Proxy server:}{87}{section*.89}

@@ -1953,6 +1953,152 @@ Ad ogni modifica del file \texttt{cupsd.conf} è necessario riavviare il servizi
 \item \texttt{lpr:} invia un job a una coda di stampa; è possibile specificare la stampante tramite l'opzione \texttt{-P} (per esempio, \texttt{lpr -P stampante documento.estensione}).
 \end{itemize}
 Tutti questi comandi sono ereditati dal precedente sistema di stampa (\texttt{lpr}).\\
+\chapter{Database}
+Un database è una collezione di dati non necessariamente omogenei, ma correlati. Può essere visto come un sistema per rappresentare dei dati e accedere alle informazioni su di essi.\\
+\paragraph{DBMS} Il DataBase Management System è il software per la gestione di uno o più database: definisce gli utenti e gli amministratori dei database che accedono ai dati a vari livelli e fornisce meccanismi di sicurezza, protezione e controllo dell'integrità dei dati.\\
+Quando si parla di DB, i principali attori sono:
+\begin{itemize}
+\item DBA, Database Administrator: gestisce gli accessi,
+predispone tabelle, indici, viste, ottimizza lo spazio disco,
+effettua i backup e i restore.
+\item Programmatori: scrivono applicazioni che utilizzano i dati
+del DB.
+\item Utenti finali: utilizzano le applicazioni che permettono di
+interrogare il DB.
+\item Sistemisti : verificano il corretto funzionamento dei
+sistemi hw e sw su cui gira il DBMS.
+\end{itemize}
+Va notato che spesso il sistemista è anche il Database Administrator.\\
+È compito del sysadmin conoscere i rudimenti del linguaggio SQL per l'interrogazione del database, i vari tipi di DBMS, deve assicurare i backup e l'integrità dei dati dei suddetti DBMS, fornirne ridondanza e capire quale DBMS sia migliore utilizzare in base alle circostanze.\\
+Tra i DBMS open source vanno menzionati MySQL, PostgreSQL, SQLite, MariaDB, Firebird SQL; per quanto riguarda quelli commerciali, invece, abbiamo Oracle, IBM DB2, MS SQL Server, Sybase, MS Access.\\
+In fin dei conti sono tutti DBMS relazionali basati su SQL, ma va fatto presente che vi sono anche DBMS non relazionali, ovvero archivi di dati che il più delle volte non richiedono uno schema fisso (schemaless), che evitano spesso le operazioni di giunzione (join) e puntano a scalare in modo orizzontale. Gli accademici e gli articoli si riferiscono a queste basi di dati come memorizzazione strutturata (structured storage).\\
+\paragraph{MySQL} è un Relational Database Management System (RDBMS) composto da un client a riga di comando e un server. È scritto in linguaggio C e C++. È disponibile su molti sistemi operativi, quasi tutti Linux-based.\\
+I linguaggi di programmazione che implementano MySQL sono ODBC, Java, Mono, .Net, PHP, Python, Perl, C\# e molti altri.\\
+Originariamente, MySQL era un piccolo DB relazionale adatto a gestire piccole applicazioni e piccoli siti web dinamici. La sua semplicità d'uso ne amplifica la diffusione tanto da essere nativo in CMS (Content Management System) importanti come JoomLa, WordPress, Drupal e altri. È incluso in piattaforme LAMP e WAMP. Nonostante il continuo sviluppo, purtroppo, resta sempre adatto ad applicazioni non intensive anche se spesso aziende emergenti lo adottano come dbms per applicazioni web. In particolare, pecca in termini di prestazioni per query che riguardano milioni di record e per sicurezza. Un buon settaggio aiuta, ma non basta nella stragrande maggioranza dei casi. Un sistema di gestione di un DB MySQL è PHPMyAdmin.\\
+\paragraph{PostgreSQL} è ritenuto da molti il DBMS open source più avanzato esistente. Alcuni lo mettono sullo stesso piano di Oracle.\\
+Si tratta di un ORDBMS (Object Relational DataBase Management System), che supporta un modello di DB Object Oriented e permette l'estensione del modello dei dati con tipi di dato e metodi personalizzati.\\
+L'architettura di PostgreSQL è di tipo Client/Server, è scritto in C e C++ e viene supportato quasi dalla totalità dei sistemi operativi presenti, dai Linux-based alle releases di Windows.\\
+Il suo campo di utilizzo comprende web apps, data warehousing, GIS (Geographic Information System), ecc..\\
+È implementato in innumerevoli linguaggi di programmazione, come ODBC, Java, Mono, .Net, PHP, Python, Perl, C\#, ecc..\\ 
+È molto sicuro, e le patch per fixare bug alla sicurezza vengono rilasciati velocemente e costantemente. Confrontandolo con MySQL ci si accorge che è molto più veloce del rivale, ma per grandi moli di dati. Il sistema di gestione è PHPPGAdmin. Parlando di robustezza, viene preferito rispetto a MySQL.\\
+\paragraph{Oracle} è un DBMS relazionale esteso con supporto agli oggetti (ORDBMS), utilizza un'architettura C/S, e dalla versione 10g ha introdotto il concetto di Grid Computing: il DBMS può essere bisto come una griglia di risorse, ossia come un insieme di macchine eterogenee interconnesse per formare un ambiente che privilegia scalabilità e condivisione.\\
+La versione 10g ormai non è più la versione corrente ed è stato operato un miglioramento che ha portato ad avere un DBMS più performante e con nuove funzionalità, ma mantiene vecchi bug (soprattutto in sicurezza) relativi a SQL injections e buffer overflows (bug sfruttati spesso negli attacchi informatici).\\
+Oracle è disponibile sia per Windows che per i sistemi Linux-based. Ha un sistema di gestione sviluppato tramite la tecnologia servlet di Java. Esiste una versione non commerciale di Oracle, poco completa, mancante di supporto costante e senza bugfix.\\
+\paragraph{Microsoft SQL Server} è il database relazionale di casa Microsoft. È un DBMS relazionale (Relational Database Management
+System RDBMS), prodotto da Microsoft. Nelle prime versioni
+era utilizzato per basi dati medio-piccole, ma a partire dalla
+versione 2000 è stato utilizzato anche per la gestione di basi
+dati di grandi dimensioni.\\
+L'ingresso di Microsoft nel mondo dei database di fascia "enterprise"
+risale intorno al 1989 quando cominciò la competizione con Oracle,
+IBM e Sybase che erano i dominatori del mercato. La prima versione
+fu SQL Server per OS/2 ed era quasi identica a Sybase SQL Server
+4.0 su Unix.\\
+Fino al 1994 Microsoft SQL Server riportava tre copyright della
+Sybase come indicazione della sua origine; in seguito Sybase cambiò
+il nome del suo prodotto in "Adaptive Server Enterprise" per evitare
+confusione con "Microsoft SQL Server".\\
+SQL Server 7.0 è stato il primo database server basato su
+un'interfaccia grafica fabbricata dalla stessa ditta del Database.
+L'attuale versione, Microsoft SQL Server 2014 (12.0), è stata
+distribuita (RTM) nel marzo 2014. Va fatto notare che alla data odierna la versione più recente è la 2016.\\
+Microsoft SQL Server è disponibile per le piattaforme Windows ed è stato annunciato un porting per Linux. Si interfaccia con i maggiori linguaggi di programmazione di casa Microsoft come C\# e .NET, ma sono presenti anche supporti per Java, C, PHP e via dicendo.\\
+Esiste una versione compact di SQL Server per piccole applicazioni e sviluppo.\\
+Il sistema di gestione del DBMS e per il backup è Microsoft SQL Server Management Studio. Si tratta di suites di prodotti di grado commerciale, anche se ne esiste una versione express utilizzabile da studenti, sviluppatori, ecc..\\
+Viene spontaneo chiedersi, a questo punto, cosa scegliere e sulla base di cosa.\\
+Riassumendo:
+\begin{itemize}
+\item \textbf{MySQL:} il vostro blog, sito web, piccolo forum, applicazioni di
+medie dimensioni.
+\item \textbf{PostgreSQL:} se avete bisogno di un database relazionale serio
+ma gratuito.
+\item \textbf{SQLServer:} se siete in ambiente Windows e avete applicazioni
+sviluppate conto terzi che richiedono esplicitamente MS SQL
+server.
+\item \textbf{Oracle:} per aziende di grosse dimensioni che si poggiano su
+gestionali (SAP), per applicazioni pesanti.
+\end{itemize}
+\paragraph{MySQL su Ubuntu:} per installare MySQL Server su Ubuntu usare il seguente comando\\
+\tab\texttt{\# apt-get install mysql-server mysql-client}\\
+Vi verrà chiesto di inserire una password di root (admin) del database.\\
+La configurazione ed il setting di MySQL avviene con la modifica del file \texttt{/etc/mysql/my.cnf}: qui potete, per esempio, specificare quali reti possono accedere a MySQL editando il parametro \texttt{bind-address}.\\
+Una volta che sono state effettuate le dovute modifiche, sarà necessario riavviare il servizio con\\
+\tab\texttt{\# service mysql restart}\\
+Per la gestione e l'utilizzo è disponibile una console da riga di comando:\\
+\tab\texttt{\# mysql -u root -p}\\
+\tab\texttt{\# mysql -u root -p 192.168.1.1} se su un altro server.\\
+Una volta avviata la console potete, per esempio, vedere quali database siano installati con il comando \texttt{show databases}, creare un DB con \texttt{create database <nome\_database>} e poi dare l'accesso al gestore del DB con\\
+\tab\texttt{\# mysql> GRANT ALL privileges ON \_db.* TO}\\
+\tab\texttt{'user'@'127.0.0.1' IDENTIFIED BY}\\
+\tab\texttt{'password'}\\
+Un tool che aiuta nella gestione di MySQL è PHPMyAdmin, un'interfaccia realizzata interamente in PHP che vi permette di effettuare operazioni anche complesse con il database. Richiede un web server per funzionare, e va protetta da accessi indesiderati. Per installare l'interfaccia di PHPMyAdmin, utilizzare il comando \texttt{apt-get install phpmyadmin}.\\
+\chapter{Firewall}
+È un sistema che protegge i computer connessi in rete da attacchi intenzionali mirati a: compromettere il funzionamento del sistema, alterare i dati memorizzati, accedere a risorse private, effettuare attacchi DoS (denial of service).\\
+Il firewall hardware si presenta come uno box delle dimensioni di un server rack o un piccolo PC tower. Può montare due o più schede di rete. Il router ADSL casalingo funge anche da firewall hardware.\\
+Il firewall software, invece, è un programma che gestisce l'hardware di un pc o server sottostante come se fosse un firewall. Gestisce due o più schede di rete. I principali firewall software sono:
+\begin{itemize}
+\item Windows Firewall.
+\item IPTables (Linux).
+\item PfSense (FreeBSD).
+\item PF (OpenBSD).
+\end{itemize}
+Va tenuto presente che distinguere una scheda di rete da un'altra è spesso un metodo valido per identificare due reti diverse.\\
+\paragraph{DMZ} o DeMilitarized Zone è il paradigma secondo il quale dovrebbe essere strutturato un firewall, che dovrebbe ospitare i server proteggendoli da attacchi esterni e interni e che dovrebbe proteggere la rete interna da questi ultimi. In questa situazione vi possono essere due firewall (DMZ OUT e DMZ IN) oppure un'unica macchina con almeno tre schede di rete che filtra il traffico tra una scheda e l'altra.\\
+In sostanza, un firewall è un sistema di controllo che verifica il traffico che lo attraversa, e di conseguenza agisce da router tra due o più reti. Il firewall Accetta o scarta il traffico in base alle policies di sicurezza settate, in particolare:
+\begin{itemize}
+\item Verifica dei pacchetti in transito (IP filtering).
+\item Mascheramento degli indirizzi interni (NAT).
+\item Blocco di pacchetti pericolosi e/o non ammessi dalle policies di sicurezza.
+\end{itemize}
+Inoltre, il firewall opera diversi tipi di controlli:
+\begin{enumerate}
+\item \textbf{Controllo dei servizi:} permette di decidere a quali tipi di
+servizi si può accedere sia out/in che in/out.
+\item \textbf{Controllo della direzione:} permette di decidere se le
+richieste di alcuni servizi posso essere avviate e inoltrate.
+\item \textbf{Controllo utente:} regola l'accesso ad un servizio in base
+all'utente che ha effettuato la richiesta.
+\item \textbf{Controllo del comportamento:} permette di controllare come
+sono utilizzati certi servizi (ad esempio filtraggio dello spam).
+\end{enumerate}
+Va puntualizzato che i punti 3 e 4 si riferiscono a firewall che agiscono a livelli superiori al 5 nello stack TCP/IP.\\
+Un firewall rimane comunque un mero applicatore di regoli, e in quanto tale è ritenuto valido tanto quanto le regole che applica.\\
+Vi sono due politiche principali applicabili quando si configura un firewall: possiamo dire che \textbf{tutto ciò che non è espressamente permesso è vietato}, oppure che \textbf{tutto ciò che non è espressamente vietato è permesso}.\\
+Nel primo caso, il firewall blocca tutto il traffico e ogni servizio abilitato deve esser configurato caso per caso. Al vantaggio della maggior sicurezza si contrappongono difficoltà di gestione (es.: dover capire che porte aprire per ogni servizio) numero di servizi disponibili all'utente limitato.\\
+Nel secondo caso, invece, il firewall inoltra tutto il traffico e ciascun servizio dannoso deve essere chiuso caso per caso. Questo comporta un'evidente aumento della facilità di gestione del sistema, a fronte di una minor sicurezza, specialmente all'aumentare della dimensione della rete.\\
+Indipendentemente dalle due policies principali appena menzionate, il firewall presenta dei limiti di base:
+\begin{itemize}
+\item \textbf{Controlla solo il traffico che lo attraversa:}
+	\begin{itemize}
+	\item Nel caso di intrusioni nella rete interna non può nulla.
+	\item Se il traffico dall'esterno arriva da un percorso non controllato dal firewall (come un'altra connessione ad internet) non c`è modo di controllarlo.
+	\end{itemize}
+\item \textbf{È una macchina:}
+	\begin{itemize}
+	\item Può essere violata.
+	\item Può diventare obsoleta.
+	\item Deve svolgere solo la funzione di firewall, e quindi deve essere la macchina più protetta della rete.
+	\end{itemize}
+\end{itemize}
+Esistono varie tipologie di firewall, tipologie che non hanno a che vedere con le policies utilizzate ma piuttosto con il layer dello stack TCP/IP nel quale operano.\\
+I firewall a \textbf{livello rete} utilizzano il packet filtering: vengono installati a monte della rete protetta, e hanno il compito di bloccare o inoltrare i pacchetti IP (IP Headers) secondo le regole definiti a priori (un esempio è \texttt{iptables}). I firewall a \textbf{livello applicativo}, trovano il loro fondamento nel Circuit/Application Gateway: analizzano e filtrano il traffico a livello trasporto/applicazione (TCP/UDP Header) sfruttando la conoscenza del servizio.\\
+
+\paragraph{Proxy server:} applicazioni software con il compito di mediare il traffico tra rete
+esterna e rete interna e consentire l'accesso a un servizio specifico (http, https,
+telnet, ftp, ecc.).\\
+I servizi proxy possono essere concentrati sul host che funge da firewall e
+hanno le seguenti caratteristiche:
+\begin{itemize}
+\item sono indipendenti tra di loro.
+\item ciascun servizio implementa solo un sottoinsieme delle funzionalità.
+\item un servizio proxy non accede al disco ad eccezione della lettura del suo file di
+configurazione.
+\item ciascun servizio proxy viene eseguito come utente non privilegiato in una directory
+privata.
+\end{itemize}
+Un esempio? I laboratori del DAIS accedono ad internet tramite un proxy server. La configurazione è da qualche anno trasparente all'utente (trasparent proxy). I laboratori del DAIS usano \texttt{squid}.\\
+
+
 
 
 
