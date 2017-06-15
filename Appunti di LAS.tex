@@ -22,9 +22,9 @@
 \newpage
 \begin{minipage}[c][\textheight][c]{\textwidth}
 \centering
-\textcopyright Sebastiano Filippetto
-\\
-Soggetto alla licenza Creative Commons\\
+%\textcopyright Sebastiano Filippetto
+%\\
+%Soggetto alla licenza Creative Commons\\
 Finito di scrivere in data \today \\
 Per eventuali suggerimenti e correzioni: \texttt{854510@stud.unive.it}
 \end{minipage}
@@ -2097,6 +2097,121 @@ configurazione.
 privata.
 \end{itemize}
 Un esempio? I laboratori del DAIS accedono ad internet tramite un proxy server. La configurazione è da qualche anno trasparente all'utente (trasparent proxy). I laboratori del DAIS usano \texttt{squid}.\\
+Un \textbf{pachet filter} (screening router) scarta o inoltra un pacchetto IP, da e verso la rete interna, sulla base di un insieme di regole di filtraggio.\\
+Le regole di filtraggio si basano sul valore dei campi contenuti nell'intestazione IP e di trasporto (TCP/UDP), tra cui:
+\begin{itemize}
+\item l'indirizzo del sorgente e del destinatario.
+\item il protocollo di trasporto.
+\item il numero di porta del sorgente e del destinatario.
+\item i flag SYN, ACK nell'header TCP.
+\end{itemize}
+I firewalls possono distinguersi in \textbf{stateless} e \textbf{stateful}.\\
+\paragraph{Stateless firewall:} osserva il traffico sulla rete e blocca i pacchetti sulla base degli indirizzi di sorgente e destinazione o su altri valori (per esempio le porte). Non tiene quindi conto del modello di traffico o del flusso di dati. Uno stateless firewall utilizza un semplice sistema di regole che non tengono in considerazione il fatto che un pacchetto ricevuto possa essere falso: per esempio, un pacchetto non http che arriva sulla porta 80 viene fatto passare.\\
+\paragraph{Stateful firewall:} osserva i flussi di traffico dalla sorgente alla destinazione. È a conoscenza, quindi, dei percorsi di comunicazione e può implementare diverse funzioni IP Security (IPSec) come i tunnel e la crittografia. In termini tecnici, ciò significa che i firewall stateful possono sapere in che stato è una connessione TCP: aperta, aperta inviata, sincronizzata, con sincronizzazione stabilita; può inoltre dire se MTU è cambiato, se i pacchetti sono frammentati, ecc..\\
+\paragraph{Stateful packet filter:} considera il traffico come uno scambio bidirezionale di pacchetti IP che costituisce una sessione di conversazione (conversation session). Permette di generare dinamicamente le regole per il prossimo pacchetto nella sessione di conversazione. In uscita/ingresso, se un pacchetto soddisfa il criterio di selezione della regola dinamica, esso viene lasciato passare e viene generata la regola per il prossimo pacchetto; altrimenti vengono applicate le regole statiche. Lo stateful packet filter permette di concentrarsi sul lasciar passare o bloccare una nuova sessione: i successivi pacchetti della sessione subiranno la stessa sorte.\\
+\paragraph{IPTables} è un firewall implementato a livello kernel che ci permette, tramite la creazione di regole, di avere una protezione per il filtraggio del traffico. Si basa su un meccanismo di regole che determinano il lasciapassare o meno di pacchetti. Le regole che devono essere inserite in un contesto ben preciso che prende il nome di catena (chain, da qui il vecchio nome ipchain). IPTables permette la realizzazione di firewall di rete ma anche di firewall locali all'interno di server che forniscono servizi.\\
+Esistono delle catene di default per IPTables:
+\begin{itemize}
+\item \textbf{INPUT:} Si lavora sui pacchetti in entrata nel sistema.
+\item \textbf{OUTPUT:} Si lavora sui pacchetti in uscita dal sistema.
+\item \textbf{FORWARD:} Si lavora sui pacchetti che sono diretti ad un altro host
+della rete ma che per poterci arrivare devono passare dal nostro
+sistema: in pratica il sistema agisce come un router.
+\item \textbf{PREROUTING}: Si lavora sui pacchetti in entrata ma a questi
+pacchetti vengono già applicate delle regole ben definite prima di
+essere instradate nel sistema.
+\item \textbf{POSTROUTING:} Si lavora sui pacchetti in uscita dal sistema ma
+solamente dopo che è stato deciso il loro instradamento.
+\end{itemize}
+Ogni catena fa parte di una tabella:
+\begin{itemize}
+\item \textbf{Filter:} INPUT, OUTPUT, FORWARD.
+\item \textbf{NAT:} OUTPUT, PREROUTING, POSTROUTING.
+\item \textbf{Mangle:} usata quando le opzioni dei pacchetti devono essere modificate.
+\end{itemize}
+Si possono anche creare nuove tabelle utili per la gestione di firewall più complessi.\\
+Per visualizzare le regole della tabella Filter usiamo il seguente comando:\\
+\tab\texttt{\# iptables -L}\\
+Per visualizzare le regole della tabella NAT (PREROUTING e POSTROUTING):\\
+\tab\texttt{\# iptables -t nat -L}\\
+Se ci interessa solo INPUT:\\
+\tab\texttt{\# iptables -L INPUT}\\
+Esempio:\\
+\tab\texttt{\# iptables -P INPUT ACCEPT}\\
+Con questo comando accettate tutti i pacchetti di input verso il vostro firewall, ma bisogna stare attenti a non "chiudersi" fuori dal proprio firewall scambiando il comando \texttt{ACCEPT} con \texttt{DROP}. Con il comando appena visto, noi aggiungiamo una regola. Ogni regola ha un numero associato, a partire da 1.\\
+Prima di scrivere le regole di un nuovo firewall è sempre bene eliminare le vecchie regole:\\
+\tab\texttt{\# iptables -X}\\
+\tab\texttt{\# iptables -Z}\\
+\tab\texttt{\# iptables -F}\\
+\tab\texttt{\# iptables -t nat -F}\\
+Va tenuto presente che \texttt{iptables} è un comando che permette di definire delle regole attraverso chiamate successive al comando stesso (in sostanza, un firewall con iptables è uno script di shell).\\
+\tab\texttt{\#!/bin/bash}\\
+\tab\texttt{echo1 > /proc/sys/net/ipv4/ip\_forward \# abilita ip\_forward}\\
+\tab\texttt{IPTABLES = \$(which iptables)}\\
+\tab\texttt{\# definizione di altre variabili utili}\\
+\tab\texttt{\$IPTABLES -F}\\
+\tab\texttt{\$IPTABLES -X}\\
+\tab\texttt{\$IPTABLES -Z}\\
+\tab\texttt{\$IPTABLES -t nat -Z}\\
+Esempio di IPTables: in input blocchiamo tutto e decidiamo cosa far passare. Essenziale in questo caso è il concetto di stato che mantiene le connessioni già avviate:\\
+\tab\texttt{\$IPTABLES -I INPUT 1 -m state --state ESTABLISHED,RELATED -j ACCEPT}\\
+\tab\texttt{\$IPTABLES -P INPUT DROP \# definisce la politica della catena}\\
+\tab\texttt{\$IPTABLES -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT}\\
+Le connessioni (che sono gestite dal modulo CONNTRACK di IPTables) possono essere \texttt{NEW, ESTABLISHED, RELATED, INVALID}. La clausola \texttt{-A} è una clausola di append, e serve a inserire la regola alla fine della catena, \texttt{-p} indica il protocollo (TCP/UDP), \texttt{-j} indica cosa fare del pacchetto e infine \texttt{--dport} indica la porta di destinazione.\\
+La regola può essere ulteriormente raffinata specificando la scheda di rete da cui arriva la richiesta (con la clausola \texttt{-i}) e/o la rete e l'host sorgente/destinazione, ecc.. Ecco un esempio:\\
+\tab\texttt{\$IPTABLES -A INPUT -p tcp -s 192.168.0.2 -i eth0 --dport 22 -j ACCEPT}\\
+Vediamo in maniera approfondita i tipi di connessioni (o stati) disponibili:
+\begin{itemize}
+\item \textbf{New:} il pacchetto non fa parte di nessun flusso o socket preesistente e il flag \texttt{SYN} di TCP è attivo.
+\item \textbf{Established:} il pacchetto fa parte di un flusso o di un socket preesistente tracciato dal modulo \texttt{CONNTRACK} e ha una qualsiasi flag TCP (\texttt{SYN}, \texttt{ACK}, \texttt{RST}). Dopo aver stabilito la connessione TCP il flag \texttt{SYN} del pacchetto deve essere impostato a \texttt{OFF} affinché lo stato sia established.
+\item \textbf{Related:} il pacchetto non fa parte di nessun flusso o socket, ma è atteso poiché esiste un un socket che lo prevede (esempio: i pacchetti di dati sulla porta 20 quando vi è una connessione FTP sulla 21; i pacchetti di dati via UDP quando vi è una connessione SIP sulla porta TCP 5060).
+\item \textbf{Invalid:} Se nessuno dei precedenti stati è applicabile al pacchetto in
+arrivo allora lo stato del pacchetto è \texttt{INVALID}. Ciò capita quando vi sono
+vari tipi di tentativi di accessi fraudolenti, o semplicemente quando
+arrivano pacchetti inaspettati dalle regole di \texttt{CONNTRACK}. Di solito nei
+log di sistema si trova traccia del passaggio di tali pacchetti, che possono far parte di traffico non malevolo.
+\end{itemize}
+Va ricordato che l'ordine in cui vengono inserite le regole in IPTables è importante. Con \texttt{-A} inseriamo la regola in coda alle altre, ma non sempre è corretto, soprattutto se aggiungiamo regole dal terminale, in quanto all'arrivo di un pacchetto IPTables inizia a leggere le regole una dopo l'altra, e nel momento in cui trova la regola che vale per i requisiti del pacchetto, la esegue senza preoccuparsi delle regole seguenti.\\
+L'opzione \texttt{-I} ci permette di inserire la regola dove vogliamo, fornendo un indice.\\
+Esaminiamo questo esempio di IPTables:\\
+\tab\texttt{\# iptables -P INPUT DROP}\\
+Accettiamo prima \texttt{http}:\\
+\tab\texttt{\# iptables -A INPUT -p tcp --dport 80 -j ACCEPT}\\
+\tab\texttt{...}\\
+Neghiamo l'accesso \texttt{http}:\\
+\tab\texttt{\# iptables -A INPUT -p tcp --dport 80 -j DROP}\\
+Questo esempio funziona?\\
+No.\\
+Come mai? Perché bisogna prima cancellare la regola precedente con il comando seguente:\\
+\tab\texttt{\# iptables -D INPUT 2}\\
+in quanto, per le ragioni spiegate qualche riga prima, l'ultima regola non verrebbe mai letta.\\
+\paragraph{Firewall di rete classico:} permette di filtrare il traffico esterno prima che raggiunga dei server in una DMZ. Ha almeno due interfacce (una esterna esposta a Internet, una sulla DMZ che costituisce il default gateway dei server pubblici).\\
+Può agire in due modi principali:
+\begin{itemize}
+\item Routing fra rete esterna e DMZ con IP pubblici.
+\item Natting fra rete esterna e DMZ con IP privati tradotti dal firewall.
+\end{itemize}
+In entrambi i casi, l'IP forwarding va attivato.\\
+Una volta definite le regole di \texttt{INPUT} a protezione del firewall, la parte interessante riguarda la catena di \texttt{FORWARD} (ovvero, ciò che passa attraverso):\\
+\texttt{
+\tab\$IPTABLES -P FORWARD DROP\\
+\tab\$IPTABLES -A FORWARD -d 157.138.20.11 -i eth0 -p tcp --dport 80 -j ACCEPT\\
+\tab\$IPTABLES -A FORWARD -d 157.138.20.11 -i eth0 -p tcp --dport 443 -j ACCEPT\\
+\tab\$IPTABLES -A FORWARD -d 157.138.20.17 -i eth0 -p tcp --dport 22 -j ACCEPT\\
+\tab\$IPTABLES -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+}\\
+Ecco ora un esempio di firewall di rete classico con NAT:\\
+\texttt{
+\tab\$IPTABLES -A FORWARD -d 10.0.0.2 -i eth0 -p tcp --dport 80 -j ACCEPT\\
+\tab\$IPTABLES -A FORWARD -d 10.0.0.2 -i eth0 -p tcp --dport 443 -j ACCEPT\\
+\tab\$IPTABLES -A FORWARD -m tcp -p tcp -s 10.0.0.0/255.255.255.0 -i eth1 -j ACCEPT\\
+\tab\$IPTABLES -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT\\
+\tab\$IPTABLES -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -j SNAT\\}
+\paragraph{Mignis} è un tool sviluppato dal gruppo di sicurezza informatica del DAIS e serve a semplificare l'uso di IPTables, introducendo regole semantiche per la descrizione di uno script firewall successivamente tradotte in regole IPTables da un interprete. Per maggiori informazioni: https://secgroup.dais.unive.it/teaching/\\securitycourse/mignis/
+\paragraph{Virual Private Network (VPN)} è un costrutto pensato per permettere ai dipendenti delle aziende di accedere in modo sicuro alle risorse all'interno dell'azienda al di fuori della rete aziendale. Una VPN crea un tunnel virtuale criptato tra un host esterno e un server sicuro di proprietà del fornitore del servizio VPN. Tutto il traffico passa in modo criptato dal computer al server, per poi uscire "normalmente" (quindi criptato per \texttt{https} e in chiaro per \texttt{http}, \texttt{ftp} e altro) sulla rete attraverso la rete aziendale. Alcuni software VPN sono Cisco VPN, Open VPN, Windows VPN Server, ecc..
+\begin{center}
+\includegraphics[scale=0.6]{vpn.png}
+\end{center}
 
 
 
@@ -2107,7 +2222,18 @@ Un esempio? I laboratori del DAIS accedono ad internet tramite un proxy server. 
 
 
 
-
+\chapter{Esercizi}
+Esercizi IPTables:\\
+Scrivere una regola di IPTables che blocchi in input l'accesso ftp alla rete 157.138.22.0.\\
+\texttt{\tab\# iptables -A INPUT -p tcp --dport 21 -s 157.138.22.0/24 -j DROP}\\
+Data la politica \texttt{iptables -P INPUT -j DROP}, realizzare delle regole IPTables che permettano l'accesso \texttt{http} e \texttt{https} per unw eb server.\\
+\texttt{\tab\# iptables -A INPUT -p tcp --dport 80 -j ACCEPT\\\tab\# iptables -A INPUT -p tcp --dport 443 -j ACCEPT}\\
+Supponendo di essere admin di un firewall la cui politica di default sulla catena di \texttt{FORWARD} è \texttt{iptables -P FORWARD DROP}:\\
+\begin{itemize}
+\item Accettare per la macchina \texttt{192.168.1.11} le connessioni \texttt{ssh}.\\\texttt{\tab\# iptables -A FORWARD -d 192.168.1.11 -i eht0 -p tcp --dport 22 -j ACCEPT}
+\item Accettare per la macchina \texttt{192.168.1.141} le connessioni \texttt{http} e \texttt{https}.\\\texttt{\tab\# iptables -A FORWARD -d 192.168.1.141 -i eth0 -p tcp --dport 80 -j ACCEPT\\\tab\# iptables -A FORWARD -d 192.168.1.141 -i eht0 -p tcp --dport 443 -j ACCEPT}
+\item Accettare per la macchina \texttt{192.168.1.110} le connessioni \texttt{ftp} solo dalla rete \texttt{192.168.2.0}.\\\texttt{\tab\# iptables -A FORWARD -d 192.168.1.110 -i eht0 -s 192.168.1.0/255.255.255.0 -p tcp -dport 21 -j ACCEPT\\\tab\# iptables -A FORWARD -d 192.168.1.110 -i eth0 -s 192.168.1.0/255.255.255.0 -p tcp --dport 20 -j ACCEPT}
+\end{itemize}
 
 
 \end{document}

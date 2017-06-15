@@ -108,3 +108,11 @@
 \contentsline {chapter}{\numberline {20}Firewall}{85}{chapter.20}
 \contentsline {paragraph}{DMZ}{85}{section*.88}
 \contentsline {paragraph}{Proxy server:}{87}{section*.89}
+\contentsline {paragraph}{Stateless firewall:}{87}{section*.90}
+\contentsline {paragraph}{Stateful firewall:}{87}{section*.91}
+\contentsline {paragraph}{Stateful packet filter:}{88}{section*.92}
+\contentsline {paragraph}{IPTables}{88}{section*.93}
+\contentsline {paragraph}{Firewall di rete classico:}{90}{section*.94}
+\contentsline {paragraph}{Mignis}{91}{section*.95}
+\contentsline {paragraph}{Virual Private Network (VPN)}{91}{section*.96}
+\contentsline {chapter}{\numberline {21}Esercizi}{92}{chapter.21}

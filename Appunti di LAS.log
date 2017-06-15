@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.4)  7 JUN 2017 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.4)  15 JUN 2017 12:52
 entering extended mode
 **"./Appunti di LAS.tex"
 ("Appunti di LAS.tex"
@@ -690,14 +690,6 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 16--22
 [1
 
 {C:/Users/valdemar/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 25.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
-
 Overfull \hbox (15.0pt too wide) in paragraph at lines 23--31
 []$[]$ 
  []
@@ -715,49 +707,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--39
 
  []
 
-[4
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 41.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
+ [4
 
 ] [5]
 Capitolo 2.
-<von1.png, id=135, 469.755pt x 407.27156pt>
+<von1.png, id=140, 469.755pt x 407.27156pt>
 File: von1.png Graphic file (type png)
  <use von1.png>
 Package pdftex.def Info: von1.png used on input line 94.
 (pdftex.def)             Requested size: 234.87692pt x 203.63527pt.
 
-<von2.png, id=136, 560.0925pt x 410.2828pt>
+<von2.png, id=141, 560.0925pt x 410.2828pt>
 File: von2.png Graphic file (type png)
  <use von2.png>
 Package pdftex.def Info: von2.png used on input line 95.
 (pdftex.def)             Requested size: 280.04556pt x 205.1409pt.
  [6
 
- <./von1.png> <./von2.png>] [7] [8] <raid0.png, id=156, 372.64218pt x 286.82156
+ <./von1.png> <./von2.png>] [7] [8] <raid0.png, id=161, 372.64218pt x 286.82156
 pt>
 File: raid0.png Graphic file (type png)
 
 <use raid0.png>
 Package pdftex.def Info: raid0.png used on input line 175.
 (pdftex.def)             Requested size: 186.32063pt x 143.41042pt.
- [9] <raid1.png, id=162, 199.49532pt x 320.69812pt>
+ [9] <raid1.png, id=167, 199.49532pt x 320.69812pt>
 File: raid1.png Graphic file (type png)
 
 <use raid1.png>
 Package pdftex.def Info: raid1.png used on input line 180.
 (pdftex.def)             Requested size: 99.7474pt x 160.34866pt.
- <raid3.png, id=163, 291.33844pt x 333.49594pt>
+ <raid3.png, id=168, 291.33844pt x 333.49594pt>
 File: raid3.png Graphic file (type png)
  <use raid3.png>
 Package pdftex.def Info: raid3.png used on input line 182.
 (pdftex.def)             Requested size: 145.66885pt x 166.74756pt.
 
 [10 <./raid0.png> <./raid1.png>]
-<raid5.png, id=168, 312.41719pt x 352.31625pt>
+<raid5.png, id=173, 312.41719pt x 352.31625pt>
 File: raid5.png Graphic file (type png)
  <use raid5.png>
 Package pdftex.def Info: raid5.png used on input line 186.
 (pdftex.def)             Requested size: 156.2082pt x 176.15768pt.
- [11 <./raid3.png> <./raid5.png>] <raid1+0.png, id=173, 341.77687pt x 316.18124
+ [11 <./raid3.png> <./raid5.png>] <raid1+0.png, id=178, 341.77687pt x 316.18124
 pt>
 File: raid1+0.png Graphic file (type png)
 
@@ -790,13 +788,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 342--358
 
 [18
 
-] <tcpip.png, id=209, 1094.58937pt x 727.21687pt>
+] <tcpip.png, id=214, 1094.58937pt x 727.21687pt>
 File: tcpip.png Graphic file (type png)
  <use tcpip.png>
 Package pdftex.def Info: tcpip.png used on input line 358.
 (pdftex.def)             Requested size: 273.64667pt x 181.80377pt.
 
-<tcpip2.png, id=210, 528.47438pt x 375.65344pt>
+<tcpip2.png, id=215, 528.47438pt x 375.65344pt>
 File: tcpip2.png Graphic file (type png)
  <use tcpip2.png>
 Package pdftex.def Info: tcpip2.png used on input line 359.
@@ -811,7 +809,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 374--385
 
  []
 
-<ipv4classi.png, id=216, 723.45282pt x 316.93407pt>
+<ipv4classi.png, id=221, 723.45282pt x 316.93407pt>
 File: ipv4classi.png Graphic file (type png)
  <use ipv4classi.png>
 Package pdftex.def Info: ipv4classi.png used on input line 403.
@@ -829,7 +827,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 452--469
 
  []
 
-<ipv4vsipv6.png, id=227, 514.17094pt x 361.35pt>
+<ipv4vsipv6.png, id=232, 514.17094pt x 361.35pt>
 File: ipv4vsipv6.png Graphic file (type png)
  <use ipv4vsipv6.png>
 Package pdftex.def Info: ipv4vsipv6.png used on input line 470.
@@ -842,7 +840,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 498--505
 
  []
 
-<strutturadir.png, id=239, 516.42938pt x 353.82187pt>
+<strutturadir.png, id=244, 516.42938pt x 353.82187pt>
 File: strutturadir.png Graphic file (type png)
  <use strutturadir.png>
 Package pdftex.def Info: strutturadir.png used on input line 524.
@@ -1014,7 +1012,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1149--1157
 
  []
 
-<dns.png, id=344, 451.6875pt x 197.23688pt>
+<dns.png, id=349, 451.6875pt x 197.23688pt>
 File: dns.png Graphic file (type png)
  <use dns.png>
 Package pdftex.def Info: dns.png used on input line 1158.
@@ -1062,7 +1060,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1292--1327
 
  []
 
-[47] <dit.png, id=370, 722.7pt x 542.025pt>
+[47] <dit.png, id=375, 722.7pt x 542.025pt>
 File: dit.png Graphic file (type png)
  <use dit.png>
 Package pdftex.def Info: dit.png used on input line 1328.
@@ -1082,7 +1080,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1340--1361
 
  []
 
-[49 <./dit.png>] <kerberos.png, id=382, 480.29437pt x 400.49625pt>
+[49 <./dit.png>] <kerberos.png, id=387, 480.29437pt x 400.49625pt>
 File: kerberos.png Graphic file (type png)
 
 <use kerberos.png>
@@ -1092,7 +1090,7 @@ Package pdftex.def Info: kerberos.png used on input line 1384.
 Capitolo 14.
 [52
 
-] <flussoposta.png, id=399, 639.89063pt x 451.6875pt>
+] <flussoposta.png, id=404, 639.89063pt x 451.6875pt>
 File: flussoposta.png Graphic file (type png)
  <use flussoposta.png>
 Package pdftex.def Info: flussoposta.png used on input line 1453.
@@ -1107,7 +1105,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1463--1464
 
  []
 
-[53 <./flussoposta.png>] <confrontomta.png, id=407, 426.84468pt x 325.96782pt>
+[53 <./flussoposta.png>] <confrontomta.png, id=412, 426.84468pt x 325.96782pt>
 File: confrontomta.png Graphic file (type png)
 
 <use confrontomta.png>
@@ -1135,7 +1133,7 @@ Overfull \hbox (88.97835pt too wide) in paragraph at lines 1517--1522
 ent[]restrictions\OT1/cmr/m/n/10 : 
  []
 
-[56] [57] <esempioamavis.png, id=432, 626.34pt x 575.14874pt>
+[56] [57] <esempioamavis.png, id=437, 626.34pt x 575.14874pt>
 File: esempioamavis.png Graphic file (type png)
 
 <use esempioamavis.png>
@@ -1152,18 +1150,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1582--1588
 
  []
 
-<post1.png, id=438, 598.48593pt x 277.78781pt>
+<post1.png, id=443, 598.48593pt x 277.78781pt>
 File: post1.png Graphic file (type png)
  <use post1.png>
 Package pdftex.def Info: post1.png used on input line 1589.
 (pdftex.def)             Requested size: 299.24223pt x 138.89355pt.
 
-<post2.png, id=439, 637.63219pt x 352.31625pt>
+<post2.png, id=444, 637.63219pt x 352.31625pt>
 File: post2.png Graphic file (type png)
  <use post2.png>
 Package pdftex.def Info: post2.png used on input line 1590.
 (pdftex.def)             Requested size: 318.8153pt x 176.15768pt.
- [59 <./esempioamavis.png> <./post1.png>] <post3.png, id=445, 626.34pt x 408.02
+ [59 <./esempioamavis.png> <./post1.png>] <post3.png, id=450, 626.34pt x 408.02
 437pt>
 File: post3.png Graphic file (type png)
 
@@ -1197,7 +1195,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1645--1654
 
  []
 
-<fsesempioconf.png, id=463, 598.48593pt x 250.68657pt>
+<fsesempioconf.png, id=468, 598.48593pt x 250.68657pt>
 File: fsesempioconf.png Graphic file (type png)
  <use fsesempioconf.png>
 Package pdftex.def Info: fsesempioconf.png used on input line 1655.
@@ -1207,7 +1205,7 @@ Overfull \hbox (14.09433pt too wide) in paragraph at lines 1655--1656
  [] 
  []
 
-[63] <esdfs1.png, id=468, 585.68813pt x 292.09125pt>
+[63] <esdfs1.png, id=473, 585.68813pt x 292.09125pt>
 File: esdfs1.png Graphic file (type png)
  <use esdfs1.png>
 Package pdftex.def Info: esdfs1.png used on input line 1666.
@@ -1217,7 +1215,7 @@ Overfull \hbox (6.41559pt too wide) in paragraph at lines 1666--1666
  [] 
  []
 
-<esdfs2.png, id=469, 614.295pt x 310.15875pt>
+<esdfs2.png, id=474, 614.295pt x 310.15875pt>
 File: esdfs2.png Graphic file (type png)
  <use esdfs2.png>
 Package pdftex.def Info: esdfs2.png used on input line 1667.
@@ -1232,7 +1230,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1669--1696
 
  []
 
-[65 <./esdfs2.png>] <autofslab.png, id=482, 606.01407pt x 370.38374pt>
+[65 <./esdfs2.png>] <autofslab.png, id=487, 606.01407pt x 370.38374pt>
 File: autofslab.png Graphic file (type png)
 
 <use autofslab.png>
@@ -1252,7 +1250,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1719--1732
 Capitolo 16.
 [69
 
-] <diffusioneweb.png, id=503, 782.925pt x 451.6875pt>
+] <diffusioneweb.png, id=508, 782.925pt x 451.6875pt>
 File: diffusioneweb.png Graphic file (type png)
 
 <use diffusioneweb.png>
@@ -1268,7 +1266,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1752--1756
 
  []
 
-<core.png, id=504, 304.88907pt x 220.57407pt>
+<core.png, id=509, 304.88907pt x 220.57407pt>
 File: core.png Graphic file (type png)
  <use core.png>
 Package pdftex.def Info: core.png used on input line 1757.
@@ -1290,7 +1288,7 @@ Overfull \hbox (21.65279pt too wide) in paragraph at lines 1776--1803
 d 
  []
 
-[71 <./core.png>] <comandiapache.png, id=515, 570.63188pt x 503.63156pt>
+[71 <./core.png>] <comandiapache.png, id=520, 570.63188pt x 503.63156pt>
 File: comandiapache.png Graphic file (type png)
 
 <use comandiapache.png>
@@ -1451,42 +1449,189 @@ Underfull \hbox (badness 10000) in paragraph at lines 2083--2085
  []
 
 [86]
-Underfull \hbox (badness 10000) in paragraph at lines 2099--2100
+Underfull \hbox (badness 10000) in paragraph at lines 2108--2109
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2113.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2109--2110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2110--2111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2111--2112
+
+ []
+
 [87]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2113.
+Overfull \hbox (35.19968pt too wide) in paragraph at lines 2132--2164
+| \OT1/cmtt/m/n/10 $IPTABLES -I INPUT 1 -m state --state ESTABLISHED,RELATED -j
+ ACCEPT 
+ []
+
+
+Overfull \hbox (35.19968pt too wide) in paragraph at lines 2132--2164
+| \OT1/cmtt/m/n/10 $IPTABLES -A INPUT -p tcp --dport 22 -m state --state NEW -j
+ ACCEPT 
+ []
+
+
+Overfull \hbox (8.9499pt too wide) in paragraph at lines 2132--2164
+| \OT1/cmtt/m/n/10 $IPTABLES -A INPUT -p tcp -s 192.168.0.2 -i eth0 --dport 22 
+-j
+ []
+
+[88] [89]
+Underfull \hbox (badness 10000) in paragraph at lines 2174--2188
+
+ []
+
+
+Overfull \hbox (14.19986pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -d 157.138.20.11 -i eth0 -p tcp --dport
+ 80
+ []
+
+
+Overfull \hbox (19.44981pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -d 157.138.20.11 -i eth0 -p tcp --dport
+ 443
+ []
+
+
+Overfull \hbox (14.19986pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -d 157.138.20.17 -i eth0 -p tcp --dport
+ 22
+ []
+
+
+Overfull \hbox (35.19968pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -m state --state RELATED,ESTABLISHED -j
+ ACCEPT 
+ []
+
+
+Overfull \hbox (3.69995pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -d 10.0.0.2 -i eth0 -p tcp --dport 80 -
+j
+ []
+
+
+Overfull \hbox (8.9499pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -d 10.0.0.2 -i eth0 -p tcp --dport 443 
+-j
+ []
+
+
+Overfull \hbox (14.19986pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -m tcp -p tcp -s 10.0.0.0/255.255.255.0
+ -i
+ []
+
+
+Overfull \hbox (35.19968pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -A FORWARD -m state --state RELATED,ESTABLISHED -j
+ ACCEPT 
+ []
+
+
+Overfull \hbox (24.69977pt too wide) in paragraph at lines 2194--2210
+| \OT1/cmtt/m/n/10 $IPTABLES -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -j
+ SNAT 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2194--2210
+
+ []
+
+[90] <vpn.png, id=629, 466.74374pt x 251.43938pt>
+File: vpn.png Graphic file (type png)
+ <use vpn.png>
+Package pdftex.def Info: vpn.png used on input line 2213.
+(pdftex.def)             Requested size: 280.0484pt x 150.86478pt.
+ [91 <./vpn.png>]
+Capitolo 21.
+
+Overfull \hbox (19.44981pt too wide) in paragraph at lines 2226--2232
+| \OT1/cmtt/m/n/10 # iptables -A INPUT -p tcp --dport 21 -s 157.138.22.0/24 -j 
+DROP 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2226--2232
+
+ []
+
+
+Overfull \hbox (23.45003pt too wide) in paragraph at lines 2233--2234
+| \OT1/cmtt/m/n/10 # iptables -A FORWARD -d 192.168.1.11 -i eht0 -p tcp --dport
+
+ []
+
+
+Overfull \hbox (28.69998pt too wide) in paragraph at lines 2234--2235
+| \OT1/cmtt/m/n/10 # iptables -A FORWARD -d 192.168.1.141 -i eth0 -p tcp --dpor
+t
+ []
+
+
+Overfull \hbox (28.69998pt too wide) in paragraph at lines 2234--2235
+| \OT1/cmtt/m/n/10 # iptables -A FORWARD -d 192.168.1.141 -i eht0 -p tcp --dpor
+t
+ []
+
+
+Overfull \hbox (102.19934pt too wide) in paragraph at lines 2235--2236
+| \OT1/cmtt/m/n/10 # iptables -A FORWARD -d 192.168.1.110 -i eht0 -s 192.168.1.
+0/255.255.255.0
+ []
+
+
+Overfull \hbox (102.19934pt too wide) in paragraph at lines 2235--2236
+| \OT1/cmtt/m/n/10 # iptables -A FORWARD -d 192.168.1.110 -i eth0 -s 192.168.1.
+0/255.255.255.0
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2239.
+[92
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2239.
  ("Appunti di LAS.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2113.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2239.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2239.
 
 Package rerunfilecheck Info: File `"Appunti di LAS".out' has not changed.
-(rerunfilecheck)             Checksum: A53A62DEEBFA6BD2D6257056A3EABF9C;1045.
+(rerunfilecheck)             Checksum: A81B61C5EF30A78DE3AEBB1C864DCD4C;1091.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2113.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2239.
  ) 
 Here is how much of TeX's memory you used:
- 7518 strings out of 493334
- 104165 string characters out of 3136663
+ 7535 strings out of 493334
+ 104321 string characters out of 3136663
  201593 words of memory out of 3000000
- 10708 multiletter control sequences out of 15000+200000
+ 10711 multiletter control sequences out of 15000+200000
  8632 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,7n,26p,919b,476s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,5n,26p,919b,476s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Appunti di LAS.pdf" (87 pages, 2179437 bytes).
+Output written on "Appunti di LAS.pdf" (92 pages, 2236735 bytes).
 PDF statistics:
- 674 PDF objects out of 1000 (max. 8388607)
- 206 named destinations out of 1000 (max. 500000)
- 301 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 713 PDF objects out of 1000 (max. 8388607)
+ 219 named destinations out of 1000 (max. 500000)
+ 314 words of extra memory for PDF output out of 10000 (max. 10000000)
 
